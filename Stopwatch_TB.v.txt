@@ -1,0 +1,127 @@
+`timescale 1ns / 1ps
+
+////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer:
+//
+// Create Date:   06:50:05 04/27/2021
+// Design Name:   stopwatch_project2
+// Module Name:   /home/ise/stopwatch_project/stopwatch_TB.v
+// Project Name:  stopwatch_project
+// Target Device:  
+// Tool versions:  
+// Description: 
+//
+// Verilog Test Fixture created by ISE for module: stopwatch_project2
+//
+// Dependencies:
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+////////////////////////////////////////////////////////////////////////////////
+
+module stopwatch_TB;
+
+	// Inputs
+	reg clk;
+	reg clk1;
+	reg clk2;
+	reg reset;
+	reg reset1;
+	reg reset2;
+
+	// Outputs
+	wire [6:0] out;
+	wire [6:0] s;
+	wire [6:0] m;
+
+	// Instantiate the Unit Under Test (UUT)
+	stopwatch_project2 uut (
+		.clk(clk), 
+		.clk1(clk1), 
+		.clk2(clk2), 
+		.reset(reset), 
+		.reset1(reset1), 
+		.reset2(reset2), 
+		.out(out), 
+		.s(s), 
+		.m(m)
+	);
+
+initial begin
+		// Initialize Inputs
+		clk = 0;
+		reset = 0;
+		#0.001
+     reset = 1;
+		#0.001
+	   reset = 0;
+		
+		
+		
+
+		// Wait 100 ns for global reset to finish
+		#100;
+        
+		// Add stimulus here
+
+	end
+	initial begin
+	forever begin
+	#0.001 clk=~clk;
+	end
+	end
+	
+	initial begin
+
+		clk1 = 0;
+		reset1 = 0;
+		#1
+		reset1 = 1;
+		#1
+		reset1 = 0;
+		
+		// Wait 100 ns for global reset to finish
+		#100;
+        
+		// Add stimulus here
+
+	end
+	
+	initial begin
+	forever begin
+	#1 clk1=~clk1;
+	end
+	end
+	
+	initial begin
+
+		
+		clk2 = 0;
+		reset2 = 0;
+		#60
+		reset2 = 1;
+		#60
+		reset1 = 0;
+		
+		
+		
+
+		// Wait 100 ns for global reset to finish
+		#100;
+        
+		// Add stimulus here
+
+	end
+	initial begin
+	forever begin
+	#60 clk2=~clk2;
+	end
+	end
+	
+	
+      
+endmodule
+
